@@ -1,0 +1,29 @@
+[package]
+authors = ["J2ghz <j2.00ghz@gmail.com>"]
+edition = "2021"
+name = "scrapers"
+publish = false
+version = "0.0.0"
+
+[dependencies]
+anyhow = "1.0.66"
+clap = {version = "4", features = ["derive"]}
+color-eyre = "0.6.2"
+futures = "0.3"
+futures-timer = "3"
+reqwest = {version = "0.11"}
+sanitize-filename-reader-friendly = "2.2.1"
+serde = {version = "1.0.148", features = ["derive"]}
+serde_json = "1"
+serde_yaml = "0.9"
+tokio = {version = "1", features = ["full"]}
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["env-filter"]}
+tracing-tree = "0.2"
+ureq = "2"
+url = {version = "2", features = ["serde"]}
+urlencoding = "2"
+voyager = "0.2"
+
+[dev-dependencies]
+insta = { version = "1.22.0", features = ["ron"] }

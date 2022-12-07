@@ -1,0 +1,7 @@
+scrapers:
+  - dest: target/test_temp
+    urls: ["https://webscraper.io/test-sites/e-commerce/allinone"]
+    domain_whitelist: ["webscraper.io"]
+    steps:
+      - !ExtractHrefsFromHTML ".caption .title"
+      - !DownloadImage "img.img-responsive"

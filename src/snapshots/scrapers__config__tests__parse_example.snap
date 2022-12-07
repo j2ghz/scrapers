@@ -1,0 +1,51 @@
+---
+source: src/config.rs
+expression: config
+---
+Config {
+    scrapers: [
+        ScraperDefinition {
+            dest: "target/test_temp",
+            urls: [
+                Url {
+                    scheme: "https",
+                    cannot_be_a_base: false,
+                    username: "",
+                    password: None,
+                    host: Some(
+                        Domain(
+                            "webscraper.io",
+                        ),
+                    ),
+                    port: None,
+                    path: "/test-sites/e-commerce/allinone",
+                    query: None,
+                    fragment: None,
+                },
+            ],
+            domain_whitelist: [
+                "webscraper.io",
+            ],
+            steps: [
+                ExtractHrefsFromHTML(
+                    HTMLSelector(
+                        Selector {
+                            selectors: [
+                                Selector(.caption .title, specificity = 0x800),
+                            ],
+                        },
+                    ),
+                ),
+                DownloadImage(
+                    HTMLSelector(
+                        Selector {
+                            selectors: [
+                                Selector(img.img-responsive, specificity = 0x401),
+                            ],
+                        },
+                    ),
+                ),
+            ],
+        },
+    ],
+}
