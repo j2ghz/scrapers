@@ -94,7 +94,9 @@ async fn main() -> anyhow::Result<()> {
             let entries = output?;
             info!("Got {} images", entries.len());
             for entry in entries {
-                process_image(entry, &agent).await?;
+                if let Err(e) = process_image(entry, &agent).await {
+                    error!(?e, "Failed to process image");
+                };
                 Delay::new(Duration::from_secs(5)).await;
             }
         }
